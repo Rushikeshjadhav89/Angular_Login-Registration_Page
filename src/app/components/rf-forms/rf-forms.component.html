@@ -1,0 +1,70 @@
+<div class="user-Signup">
+    <form [formGroup]="user_Reg" (ngSubmit)="uData(user_Reg.value)" *ngIf="uShowPage">
+      <h1>User Sign-Up</h1>
+      <div class="row">
+        <div class="col-sm-12 mt2">
+          <input type="text" name="uName" placeholder="Enter your name" formControlName="uName" class="form-control" [(ngModel)]="uName">
+          <div class="form-control is-invalid" *ngIf="user_Reg.get('uName').invalid && user_Reg.get('uName').touched">
+            <div *ngIf="user_Reg.get('uName').errors.required">Give your Name please</div>
+            <div *ngIf="user_Reg.get('uName').errors.pattern">please provide valid name</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mt-2">
+          <input type="text" name="uLastName" placeholder="Enter your last name" formControlName="uLastName" class="form-control" [(ngModel)]="uLastName">
+          <div class="form-control is-invalid" *ngIf="user_Reg.get('uLastName').invalid && user_Reg.get('uLastName').touched">
+            <div *ngIf="user_Reg.get('uLastName').errors.required">Give your Last Name please</div>
+            <div *ngIf="user_Reg.get('uLastName').errors.pattern">please provide valid Last name</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mt-2">
+          <input type="email" name="uMail" placeholder="Enter Your E-mail" formControlName="uMail" class="form-control" [(ngModel)]="uMail">
+          <div class="form-control is-invalid" *ngIf="user_Reg.get('uMail').invalid && user_Reg.get('uMail').touched">
+            <div *ngIf="user_Reg.get('uMail').errors.required">Plese Provide E-mail</div>
+            <div *ngIf="user_Reg.get('uMail').errors.pattern">Please provide valid E-mail address</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mt-2">
+          <input type="text" name="uPass" placeholder="Enter your login Password" formControlName="uPass" class="form-control" [(ngModel)]="uPass">
+          <div class="form-control is-invalid" *ngIf="user_Reg.get('uPass').invalid && user_Reg.get('uPass').touched">
+            <div *ngIf="user_Reg.get('uPass').errors.required">Password Is required</div>
+            <div *ngIf="user_Reg.get('uPass').errors.pattern">Please provide a Strong Password</div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="form-control mt-5" [disabled]="user_Reg.invalid">Sign-Up</button><br>
+      <a class="auth-toggel-link" (click)="openLogin()">Already Have an Account? Click to Login</a>
+    </form>
+  
+    <!-- User Login -->
+  
+    <form [formGroup]="user_login" (ngSubmit)="uSubmit(user_login.value)" *ngIf="!uShowPage">
+      <h1>User Login</h1>
+      <div class="row">
+        <div class="col-sm-12 mt-2">
+          <input type="email" name="u_Mail" placeholder="Enter Your E-mail" formControlName="u_Mail" class="form-control" [(ngModel)]="u_Mail">
+          <div class="form-control is-invalid" *ngIf="user_login.get('u_Mail').invalid && user_login.get('u_Mail').touched">
+            <div *ngIf="user_login.get('u_Mail').errors.required">Plese Provide E-mail</div>
+            <div *ngIf="user_login.get('u_Mail').errors.pattern">Please provide valid E-mail address</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mt-2">
+          <input type="text" name="u_Pass" placeholder="Enter your login Password" formControlName="u_Pass" class="form-control" [(ngModel)]="u_Pass">
+          <div class="form-control is-invalid" *ngIf="user_login.get('u_Pass').invalid && user_login.get('u_Pass').touched">
+            <div *ngIf="user_login.get('u_Pass').errors.required">Password Is required</div>
+            <div *ngIf="user_login.get('u_Pass').errors.pattern">Please provide Strong Password</div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="form-control mt-5" [disabled]="user_login.invalid">Log-In</button><br>
+      <a class="auth-toggel-link" (click)="openSignup()">Don't Have an Account? Click to Sign-Up</a>
+    </form>
+  </div>
+  
